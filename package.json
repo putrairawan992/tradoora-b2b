@@ -1,0 +1,7 @@
+{
+  "name": "tradoora-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ]
+}
