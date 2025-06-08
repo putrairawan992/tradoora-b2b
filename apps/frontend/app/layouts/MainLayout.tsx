@@ -45,7 +45,7 @@ export default function MainLayout() {
       localStorage.removeItem("authToken");
       localStorage.removeItem("userData");
       utils.user.me.invalidate(); 
-      navigate("/login");
+      navigate("/");
     },
     onError: (error) => {
       toast.error(error.message || "An error occurred during logout.");
@@ -76,7 +76,7 @@ export default function MainLayout() {
         onSignOut={handleSignOut}
         isSigningOut={logoutMutation.isPending}
       />
-      <div className="flex-grow lg:pt-8 pt-24 md:pt-32"> 
+      <div className="flex-grow lg:pt-8 pt-0 md:pt-7"> 
         <Outlet context={{ isAuthenticated, user: currentUser, isLoadingUser }} /> 
       </div>
       <Footer/>

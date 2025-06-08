@@ -1,5 +1,5 @@
 import { LogOut, User as UserIcon } from "lucide-react";
-import { Outlet, Link, useNavigate } from "react-router"; // Pastikan ini benar
+import { Outlet, Link, useNavigate } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { CardDescription, CardTitle } from "~/components/ui/card";
@@ -12,30 +12,29 @@ export default function UserLayout() {
   const navigate = useNavigate();
   const utils = trpc.useUtils();
 
-  const { data: userData, isLoading: isLoadingUser } = trpc.user.me.useQuery(
+  const { data: userData, isLoading: isLoadingUser, isFetching, isError } = trpc.user.me.useQuery(
     undefined,
     {
       retry: false,
       staleTime: 5 * 60 * 1000,
+      enabled: typeof window !== 'undefined' && !!localStorage.getItem('authToken'), 
     }
   );
 
-useEffect(() => {
-  if (!isLoadingUser) {
-    if (!userData || !userData.success) {
-      const timer = setTimeout(() => {
-        if (!utils.user.me.getData()?.success) { 
-          toast.error("Session expired or unauthorized. Please login again.");
-          localStorage.removeItem("authToken");
-          localStorage.removeItem("userData");
-          utils.user.me.invalidate(); 
-          navigate("/login", { replace: true });
-        }
-      }, 100); 
-      return () => clearTimeout(timer);
+  useEffect(() => {
+    if (!isLoadingUser && !isFetching && (isError || !userData?.success)) {
+      const authToken = localStorage.getItem("authToken");
+
+      if (!authToken || isError) { 
+        toast.error("Session expired or unauthorized. Please login again.");
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userData");
+        utils.user.me.invalidate(); 
+        navigate("/login", { replace: true });
+      }
     }
-  }
-}, [isLoadingUser, userData, navigate, utils]);
+  }, [isLoadingUser, isFetching, isError, userData, navigate, utils]);
+
 
   const logoutMutation = trpc.user.logout.useMutation({
     onSuccess: (data) => {
@@ -47,14 +46,14 @@ useEffect(() => {
       localStorage.removeItem("authToken");
       localStorage.removeItem("userData");
       utils.user.me.invalidate();
-      navigate("/login");
+      navigate("/");
     },
     onError: (error) => {
       toast.error(error.message || "An error occurred during logout.");
       localStorage.removeItem("authToken");
       localStorage.removeItem("userData");
       utils.user.me.invalidate();
-      navigate("/login");
+      navigate("/");
     },
   });
 
@@ -62,7 +61,7 @@ useEffect(() => {
     logoutMutation.mutate();
   };
 
-  if (isLoadingUser || !userData || !userData.success) {
+  if (isLoadingUser || isFetching || !userData?.success) { // Tambahkan isFetching di sini
     return (
       <main>
         <nav className="w-full border-b h-auto bg-white shadow-sm">

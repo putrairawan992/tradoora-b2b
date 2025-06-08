@@ -15,13 +15,13 @@ const images = [
 export function HeroSectionsNew() {
   return (
     <main className="pt-28">
-      <Carousel className="w-full max-w-6xl mx-auto">
+      <Carousel className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <CarouselContent>
           {images.map((src, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
                 <Card className="overflow-hidden rounded-xl border-0 shadow-none">
-                  <CardContent className="h-[400px] w-full p-0">
+                  <CardContent className="h-[200px] sm:h-[300px] md:h-[400px] w-full p-0">
                     <img
                       src={src}
                       alt={`Hero ${index + 1}`}
@@ -34,7 +34,7 @@ export function HeroSectionsNew() {
           ))}
         </CarouselContent>
         <CarouselPrevious className="h-24 rounded hover:bg-accent cursor-pointer" />
-        <CarouselNext className="h-24 rounded hover:bg-accent cursor-pointer" />
+        <CarouselNext className="h-24 rounded hover:bg-accent cursor-pointer lg:flex md:flex hidden" />
       </Carousel>
     </main>
   );

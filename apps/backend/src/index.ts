@@ -26,7 +26,7 @@ app.post("/midtrans/callback", async (c) => {
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://your-frontend-domain.vercel.app',
+  'https://tradoora-b2b-1.onrender.com',
   process.env.FRONTEND_URL,
 ].filter((origin): origin is string => !!origin);
 

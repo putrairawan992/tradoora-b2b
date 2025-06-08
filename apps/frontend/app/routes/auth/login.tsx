@@ -112,7 +112,7 @@ export default function LoginForm() {
                                 <label className="flex items-center space-x-2 cursor-pointer">
                                     <input type="checkbox" className="rounded border-gray-300 text-amber-600 focus:ring-amber-500" />
                                     <span className="text-gray-600">Remember me</span>
-                                </label>
+                                    </label>
                                 <button type="button" className="text-amber-600 hover:text-amber-700 font-medium">
                                     Forgot password?
                                 </button>

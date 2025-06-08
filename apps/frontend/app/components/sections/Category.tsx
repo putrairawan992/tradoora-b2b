@@ -23,13 +23,15 @@ export function Category() {
         <CardHeader>
           <CardTitle>Category Popular</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-row gap-3">
+        {/* Menggunakan grid untuk layout responsif */}
+        <CardContent className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {data.map((item, idx) => {
             const Icon = item.icon;
             return (
               <Card
                 key={idx}
-                className="flex flex-row items-center shadow-none p-2 w-full"
+                // Hapus w-full di sini, grid akan mengatur lebar
+                className="flex flex-row items-center shadow-none p-2" 
               >
                 <CardContent className="flex-row flex justify-end gap-2 items-center p-1">
                   <Icon size={20} className={item.color} />
