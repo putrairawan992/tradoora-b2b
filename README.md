@@ -4,6 +4,34 @@ Dokumen ini memuat panduan untuk pengaturan dan instalasi proyek **Tradoora B2B*
 
 ---
 
+## ✨ Fitur Utama:
+
+- **Login & Register**  
+  Pengguna dapat mendaftarkan akun bisnis atau masuk ke akun yang sudah ada untuk mengakses fitur e-commerce secara penuh.
+
+- **Logout**  
+  Keluar dari akun dengan aman untuk menjaga privasi dan keamanan data bisnis.
+
+- **Pencarian Produk**  
+  Fitur pencarian memudahkan pengguna menemukan produk yang dibutuhkan dengan cepat berdasarkan nama atau kata kunci.
+
+- **Filter Produk**  
+  Pengguna dapat memfilter produk berdasarkan kategori, harga, popularitas, ulasan, dan lainnya untuk mempercepat proses pencarian.
+
+- **Checkout Produk**  
+  Proses pembelian yang mudah dan efisien, mendukung transaksi dalam jumlah besar sesuai kebutuhan bisnis.
+
+- **Ulasan Produk (Review)**  
+  Setelah pembelian, pengguna dapat memberikan ulasan dan rating untuk produk yang dibeli guna membangun kredibilitas dan membantu pengguna lain dalam membuat keputusan.
+
+## Video Demo
+
+[🔗 View on Google Drive](https://drive.google.com/file/d/1nitaxJ6ozSM8qRWIFcWwneLF8DwTvXIR/view?usp=sharing)
+
+## Link Demo
+[Tradoora Link](https://tradoora-b2b-1.onrender.com/)
+---
+
 ## 📋 Persyaratan Sistem
 
 Sebelum memulai instalasi, pastikan sistem Anda memenuhi persyaratan berikut:
